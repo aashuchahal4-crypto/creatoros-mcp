@@ -1,0 +1,30 @@
+{
+  "name": "creatoros-mcp",
+  "version": "1.0.0",
+  "description": "Official Model Context Protocol (MCP) server for CreatorOS — Fast Web-to-Markdown extraction, autonomous agent live web search, and neural text-to-speech for Claude Desktop, Cursor, and Windsurf.",
+  "main": "index.js",
+  "bin": {
+    "creatoros-mcp": "bin/cli.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "cursor",
+    "web-scraping",
+    "web-to-markdown",
+    "rag",
+    "ai-agent",
+    "web-search",
+    "text-to-speech"
+  ],
+  "author": "CreatorOS Team <support@thecreatoros.dev> (https://thecreatoros.dev)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aashuchahal4-crypto/creatoros-mcp.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
