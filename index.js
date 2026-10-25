@@ -16,13 +16,15 @@ const CREATOROS_API_KEY = process.env.CREATOROS_API_KEY || '';
 const TOOLS = [
   {
     name: 'creatoros_extract',
-    description: 'Converts any public webpage into clean, noise-free Markdown formatted for LLMs and RAG pipelines. Strips ads, navigation, and tracker scripts.',
+    description: 'Extracts readable main content from any public web page URL and converts it into clean, noise-free Markdown optimized for LLM context, summarization, and RAG pipelines. Strips advertisements, navigation headers, cookie banners, and scripts while preserving headings, lists, tables, and code blocks.\n\nWhen to use:\n- Call this tool when the user provides a specific URL or asks to read, scrape, summarize, or analyze documentation, blog posts, news articles, or API references from the web.\n\nWhen NOT to use:\n- Do not use for keyword searches without a known URL (use creatoros_search instead).\n- Do not use for private intranet pages or sites behind interactive authentication/login walls.\n\nBehavior:\n- Idempotent and read-only. Does not mutate server state.\n- Returns extracted Markdown as plain text.',
     inputSchema: {
       type: 'object',
       properties: {
         url: {
           type: 'string',
-          description: 'The public web page URL to fetch and convert into Markdown (e.g. https://example.com/blog).'
+          format: 'uri',
+          pattern: '^https?:\\/\\/.+',
+          description: 'The fully-qualified HTTP or HTTPS URL of the public web page to fetch and convert (e.g. "https://docs.python.org/3/tutorial/").'
         }
       },
       required: ['url']
@@ -30,17 +32,22 @@ const TOOLS = [
   },
   {
     name: 'creatoros_search',
-    description: 'Autonomous multi-URL agent live web search. Retrieves fresh search results and automatically extracts deep Markdown from the top matching pages.',
+    description: 'Executes an autonomous live web search for fresh information and automatically extracts deep Markdown content from the highest-ranking search result pages. Combines web search retrieval and web scraping in a single step for AI agents.\n\nWhen to use:\n- Use when you need real-time, up-to-date web information, breaking news, latest documentation, or answers to queries where no specific target URL is provided.\n\nWhen NOT to use:\n- If the user has already provided an exact web URL to scrape, use creatoros_extract instead.\n\nBehavior:\n- Read-only and non-destructive.\n- Returns a structured Markdown document containing top ranked titles, URLs, text snippets, and extracted page content.',
     inputSchema: {
       type: 'object',
       properties: {
         query: {
           type: 'string',
-          description: 'The search query to look up (e.g. "latest Python 3.13 release notes", "FastAPI RAG tutorial").'
+          minLength: 2,
+          maxLength: 250,
+          description: 'The search query keywords or question to look up on the live web (e.g. "Python 3.13 release changelog features", "FastAPI production best practices").'
         },
         limit: {
           type: 'number',
-          description: 'Maximum number of search results to return (1 to 5). Default is 5.'
+          minimum: 1,
+          maximum: 5,
+          default: 5,
+          description: 'The maximum number of top search results to return and extract (integer between 1 and 5). Default is 5.'
         }
       },
       required: ['query']
@@ -48,17 +55,21 @@ const TOOLS = [
   },
   {
     name: 'creatoros_speak',
-    description: 'Generates natural studio-grade English voice speech from text using the CreatorOS Neural Voice Studio.',
+    description: 'Converts English text into natural, studio-quality speech audio with human inflection and cadence using the CreatorOS Neural Voice Studio. Returns a playable audio URL or audio stream.\n\nWhen to use:\n- Use when the user requests spoken voice responses, podcast narration, voiceover scripts, or audio synthesis of text.\n\nWhen NOT to use:\n- Do not use for text extraction, web scraping, or non-audio tasks.\n\nBehavior:\n- Synthesizes neural audio on demand. Free tier supports up to 250 characters per generation; Pro Pass supports up to 5,000 characters.',
     inputSchema: {
       type: 'object',
       properties: {
         text: {
           type: 'string',
-          description: 'The English text script to convert into voice audio (up to 250 characters free, 5000 characters with Pro Pass).'
+          minLength: 1,
+          maxLength: 5000,
+          description: 'The English script to convert into voice audio (up to 250 characters free, 5000 characters with Pro Pass).'
         },
         voice: {
           type: 'string',
-          description: 'Voice persona: "anna" (warm female), "charles" (deep male), "alba" (bright male), "stuart_bell" (narrator). Default is "anna".'
+          enum: ['anna', 'charles', 'alba', 'stuart_bell'],
+          default: 'anna',
+          description: 'The voice persona to use: "anna" (warm female), "charles" (deep male), "alba" (bright male), or "stuart_bell" (documentary narrator). Default is "anna".'
         }
       },
       required: ['text']

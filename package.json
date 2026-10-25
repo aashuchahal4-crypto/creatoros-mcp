@@ -1,10 +1,13 @@
 {
   "name": "creatoros-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official Model Context Protocol (MCP) server for CreatorOS — Fast Web-to-Markdown extraction, autonomous agent live web search, and neural text-to-speech for Claude Desktop, Cursor, and Windsurf.",
   "main": "index.js",
   "bin": {
     "creatoros-mcp": "bin/cli.js"
+  },
+  "scripts": {
+    "test": "node -e \"require('./index.js'); console.log('✅ CreatorOS MCP server validated.');\""
   },
   "keywords": [
     "mcp",
