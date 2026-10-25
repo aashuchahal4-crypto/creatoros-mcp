@@ -1,5 +1,9 @@
 # CreatorOS Model Context Protocol (MCP) Server
 
+[![Glama Score](https://glama.ai/mcp/servers/aashuchahal4-crypto/creatoros-mcp/badges/score.svg)](https://glama.ai/mcp/servers/aashuchahal4-crypto/creatoros-mcp)
+[![npm version](https://img.shields.io/npm/v/creatoros-mcp.svg?color=blue)](https://www.npmjs.com/package/creatoros-mcp)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 Official Model Context Protocol (MCP) server for [CreatorOS](https://thecreatoros.dev). Connects **Claude Desktop**, **Cursor**, **Windsurf**, and **Zed** directly to the high-throughput CreatorOS Web-to-Markdown extraction engine, autonomous agent web search, and neural text-to-speech studio.
 
 Zero dependencies. Instant startup (<1s).
