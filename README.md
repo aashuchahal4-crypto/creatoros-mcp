@@ -1,6 +1,6 @@
 # CreatorOS Model Context Protocol (MCP) Server
 
-[![creatoros-mcp MCP server – quality and maintenance score on Glama](https://glama.ai/mcp/servers/aashuchahal4-crypto/creatoros-mcp/badges/score.svg)](https://glama.ai/mcp/servers/aashuchahal4-crypto/creatoros-mcp)
+[![creatoros-mcp MCP server – quality and maintenance score on Glama](https://glama.ai/mcp/servers/aashuchahal4-crypto/creatoros-mcp/badges/score.svg?1)](https://glama.ai/mcp/servers/aashuchahal4-crypto/creatoros-mcp)
 [![CI](https://github.com/aashuchahal4-crypto/creatoros-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/aashuchahal4-crypto/creatoros-mcp/actions)
 [![npm version](https://img.shields.io/npm/v/creatoros-mcp.svg?color=blue)](https://www.npmjs.com/package/creatoros-mcp)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
