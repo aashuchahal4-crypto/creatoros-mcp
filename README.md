@@ -77,8 +77,8 @@ Add this to your Claude Desktop configuration file:
 ---
 
 ## Pricing & Rate Limits
-- **Free Tier:** 20 web extractions / hour with no API key required.
-- **Pro Tier:** Pass-holders get up to 500,000 monthly extractions, dedicated concurrency, and priority voice queues. Get your pass at [https://thecreatoros.dev/#passes](https://thecreatoros.dev/#passes).
+- **Free Tier:** 5 web extractions / day with no API key required to test.
+- **Pro Tier:** Pass-holders get up to 500,000 extractions, dedicated concurrency, and priority voice queues. Get your pass at [https://thecreatoros.dev/#passes](https://thecreatoros.dev/#passes).
 
 ---
 
